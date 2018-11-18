@@ -1,0 +1,8 @@
+[user]
+	email = dth.bht@gmail.com
+	name = HermitSage
+[color]
+	ui = true
+[core]
+	compression = 0
+	editor = vim
