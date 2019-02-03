@@ -1,0 +1,4 @@
+Nov 25 18:36 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Nov 25 18:36 : exception: Failed to open '/home/haxolotl/.config/mpd/state': No such file or directory
+Nov 25 18:37 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Nov 25 18:37 : exception: Failed to open '/home/haxolotl/.config/mpd/state': No such file or directory
