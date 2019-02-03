@@ -99,7 +99,6 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-
 call plug#begin()
 
 Plug 'terryma/vim-multiple-cursors'
@@ -109,5 +108,39 @@ Plug 'tpope/vim-surround'
 Plug 'xuhdev/vim-latex-live-preview'
 Plug 'vim-latex/vim-latex'
 Plug 'ervandew/supertab'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#left_sep = ''
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+" NOTE: you need to install completion sources to get completions. Check
+" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+
+" Easy exit Insert Mode and Terminal Mode
+tnoremap jk <C-\><C-n>
+inoremap jk <Esc>
+
+" Easier window movements
+nnoremap <C-J> <C-W><C-J> " Move Down
+nnoremap <C-K> <C-W><C-K> " Move Up
+nnoremap <C-L> <C-W><C-L> " Move Left
+nnoremap <C-H> <C-W><C-H> " Move Right
+
+"Natural split opening
+set splitbelow
+set splitright

@@ -111,3 +111,5 @@ Plug 'vim-latex/vim-latex'
 Plug 'ervandew/supertab'
 
 call plug#end()
+
+colorscheme blue
