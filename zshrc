@@ -26,7 +26,7 @@ ZSH_THEME="powerline"
 # export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -52,15 +52,15 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
+# Example format: plugins=(history history-substring-search rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(gitfast git-extras python tmux)
+#
+plugins=(gitfast git-extras python sudo history-substring-search)
 
 POWERLINE_PATH="dir"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 source $ZSH/oh-my-zsh.sh
-
-ZSH_TMUX_AUTOSTART=true
 
 autoload -U zmv
 
@@ -95,16 +95,23 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH=$PATH:$HOME/bin
-
-# alias anaconda='/home/adithya/anaconda3/bin/python'
-
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 # export GOPATH=/home/adithya/go
 
+# vim is always nvim
 alias vim="stty stop '' -ixoff ; nvim"
 alias vimtex="nvim --servername VIM"
+
+# Open vim everywhere
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 export VISUAL=nvim
 
+# Enable Z cd-ing
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
+# Enable VIM mode for the terminal
+bindkey -v
+
+source ~/.config/cd-alias.conf
+

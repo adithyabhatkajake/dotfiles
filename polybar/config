@@ -1,9 +1,9 @@
 [bar/top]
-monitor = ${env:MONITOR:eDP-1}
+monitor = ${env:MONITOR:eDP1}
 width = 100%
 height = 26
 
-background = #00000000
+background = #6a000000
 foreground = #ccffffff
 
 line-color = ${bar/top.background}
@@ -16,11 +16,12 @@ module-margin = 4
 font-0 = NotoSans-Regular:size=10;-1
 font-1 = MaterialIcons:size=10;0
 font-2 = Wuncon Siji:size=8:antialias=false;-2
-font-3 = FontAwesome:size=10;0
+font-3 = FontAwesome:size=14;0
+font-4 = "DejaVu Sans Mono for Powerline":size=14
 
-modules-left = powermenu spotify
-modules-center = date
-modules-right = volume backlight wireless-network wired-network battery 
+modules-left = wireless-network wired-network 
+modules-center = date 
+modules-right = volume backlight battery 
 
 [module/backlight]
 type = internal/backlight
@@ -76,8 +77,7 @@ animation-charging-framerate = 750
 
 [module/date]
 type = internal/date
-date =   %%{F#fff}%H:%M%%{F-}
-date-alt = %%{F#fff}%A, %d %B %Y%%{F-}
+date =   %%{F#fff}%H:%M %d %B, %Y - %A%%{F-}
 
 [module/wireless-network]
 type = internal/network
@@ -122,43 +122,6 @@ ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-volume-3 = 
-
-[module/powermenu]
-type = custom/menu
-
-format-padding = 1
-
-label-open = 
-label-close = 
-label-seperator = " | "
-
-menu-0-0 = "Reboot "
-menu-0-0-foreground = #fba922
-menu-0-0-exec = menu-open-1
-menu-0-1 = Power off
-menu-0-1-foreground = #fba922
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = "Cancel "
-menu-1-0-foreground = #fba922
-menu-1-0-exec = menu-open-0
-menu-1-1 = "Reboot"
-menu-1-1-foreground = #fba922
-menu-1-1-exec = systemctl reboot
-
-menu-2-0 = Power off
-menu-2-0-foreground = #fba922
-menu-2-0-exec = systemctl poweroff
-menu-2-1 = Cancel
-menu-2-1-foreground = #fba922
-menu-2-1-exec = menu-open-0
-
-[module/spotify]
-type = custom/script
-interval = 3
-format-prefix = " "
-format = <label>
-exec = python ~/.config/polybar/polybar-spotify/spotify_status.py -f '{play_pause} {song} - {artist}' -t 50
 
 [bar/bottom]
 monitor = ${env:MONITOR:eDP-1}

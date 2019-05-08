@@ -12,24 +12,38 @@ set wrap
 " Use X clipboard
 set clipboard=unnamedplus
 
-" Enable Syntax Highlighting for many programming languages
+" Enable Filetype based plugins
 filetype plugin on
 
-" Show Line Numbers
+" Show Both absolute and relative Line Numbers
 set number relativenumber
-" set relativenumber
 
-" Enable Spell Checking
-" set spell
+" Fix and set leader key to <SPACE>
+nnoremap <SPACE> <NOP>
+let mapleader=" " 
+" Leader commands
+nnoremap <leader>s :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>o :setlocal spell! spelllang=en_us<CR>
+nnoremap <leader>b :NERDTreeToggle<CR>
+nnoremap <leader>n :r !echo ""<CR>k
+
+" Easy exit Insert Mode and Terminal Mode
+tnoremap jk <C-\><C-n>
+inoremap jk <Esc>
 
 set tabstop=4
 set shiftwidth=4
-
 set lcs=eol:¬
-set list
 
+" Convert tabs to spaces
 set expandtab
+
+" Show the normal commands like dt., 4cw, etc
 set showcmd
+
+" Enable displaying of listchars like \n char
+set list
 
 " Disable Powerline
 let g:powerline_loaded = 1
@@ -41,9 +55,9 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 let g:tex_flavor='latex'
-let g:Tex_FoldedSections     = ""
-let g:Tex_FoldedEnvironments = ""
-let g:Tex_FoldedMisc = ""
+" let g:Tex_FoldedSections     = ""
+" let g:Tex_FoldedEnvironments = ""
+" let g:Tex_FoldedMisc = ""
 let g:Imap_UsePlaceHolders = 0
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_CompileRule_pdf = 'pdflatex --synctex=1 -interaction=nonstopmode $*'
@@ -52,22 +66,7 @@ let theuniqueserv = expand("%:r")
 " Break lines when they exceed 80 characters
 set tw=80 linebreak
 
-" Fix and set leader key to <SPACE>
-nnoremap <SPACE> <NOP>
-let mapleader=" "
-
-" Save and Quit
-nnoremap <leader>s :w<CR>
-nnoremap <leader>q :q<CR>
-
-" Set nerdtree to leader+b
-nmap <leader>b :NERDTreeToggle<CR>
-
-" Auto-indent the entire file
-nmap <leader>I gg=G`.
-
 let g:powerline_pycmd = "py3"
-inoremap ii <Esc>:w<CR> 
 
 " air-line
 let g:airline_powerline_fonts = 1
@@ -128,13 +127,6 @@ autocmd BufEnter * call ncm2#enable_for_buffer()
 " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
 
-" NOTE: you need to install completion sources to get completions. Check
-" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
-
-" Easy exit Insert Mode and Terminal Mode
-tnoremap jk <C-\><C-n>
-inoremap jk <Esc>
-
 " Easier window movements
 nnoremap <C-J> <C-W><C-J> " Move Down
 nnoremap <C-K> <C-W><C-K> " Move Up
@@ -144,3 +136,18 @@ nnoremap <C-H> <C-W><C-H> " Move Right
 "Natural split opening
 set splitbelow
 set splitright
+
+" Update programs when configs are updated
+autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
+
+" Clean tex files when closing a tex file
+autocmd VimLeave *.tex !rm *.aux, *.blg, *.bbl, *.log, *.out
+
+" Skeleton File Loading
+autocmd BufNewFile *.pmd 0r ~/.config/nvim/templates/pandoc-markdown.pmd
+autocmd BufNewFile *.tex 0r ~/.config/nvim/templates/latex.tex
+autocmd BufNewFile *.py 0r ~/.config/nvim/templates/python.py
+autocmd BufNewFile *.sh 0r ~/.config/nvim/templates/shell.sh
+autocmd BufNewFile *.bmr 0r ~/.config/nvim/templates/pandoc-beamer.bmr
+autocmd BufNewFile *.c 0r ~/.config/nvim/templates/C-template.c
+autocmd BufNewFile *.h 0r ~/.config/nvim/templates/C-template.c
