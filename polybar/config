@@ -1,55 +1,54 @@
+[colors]
+background = #000000
+white = #fff
+red = #ff0000
+black = #000000
+blue = #02adff
+violet = #8e1eff
+green = #17a589
+grey = #212f3c
+light-blue = #00bcd4
+
 [bar/top]
 monitor = ${env:MONITOR:eDP1}
 width = 100%
-height = 26
+height = 24
+bottom = true
 
-background = #6a000000
-foreground = #ccffffff
+background = ${colors.background}
+foreground = #ffffff
 
-line-color = ${bar/top.background}
-line-size = 16
+# line-color = ${bar/top.background}
+# line-size = 16
 
-spacing = 2
-padding-right = 5
-module-margin = 4
+spacing = 0
+# padding-right = 1
+# module-margin = 1
 
-font-0 = NotoSans-Regular:size=10;-1
+font-0 = Iosevka Nerd Font:size=10:antialias=true
 font-1 = MaterialIcons:size=10;0
 font-2 = Wuncon Siji:size=8:antialias=false;-2
 font-3 = FontAwesome:size=14;0
 font-4 = "DejaVu Sans Mono for Powerline":size=14
+font-5 = DejaVuSansMono Nerd Font:size=15;2
 
-modules-left = wireless-network wired-network 
-modules-center = date 
-modules-right = volume backlight battery 
-
-[module/backlight]
-type = internal/backlight
-format = <ramp> <bar>
-card = intel_backlight
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-
-bar-width = 11
-bar-indicator = |
-bar-indicator-font = 3
-bar-indicator-foreground = #ff
-bar-fill = –
-bar-fill-font = 3
-bar-fill-foreground = #c9665e
-bar-empty = –
-bar-empty-font = 3
-bar-empty-foreground = #44
+modules-left = i3 arrowi3 wireless-network arrow-wireless wired-network arrow-wired
+modules-center = arrow-date date arrow-date-end
+modules-right = arrow-memory memory arrow-cpu cpu arrow-volume-begin volume arrow-volume-end battery
 
 [module/battery]
 type = internal/battery
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
-format-discharging = <ramp-capacity> <label-discharging>
-format-full = <ramp-capacity> <label-full>
+format-charging =  <animation-charging> <label-charging> 
+format-discharging = <ramp-capacity> <label-discharging> 
+format-full = <ramp-capacity> <label-full> 
+format-charging-padding = 3
+format-charging-background = ${colors.grey}
+format-discharging-padding = 3
+format-discharging-background = ${colors.grey}
+format-full-padding = 3
+format-full-background = ${colors.grey}
 
 ramp-capacity-0 = 
 ramp-capacity-0-foreground = #f53c3c
@@ -75,9 +74,42 @@ animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-framerate = 750
 
+[module/arrow-date]
+type = custom/text
+content = ""
+content-font = 6
+content-foreground = ${colors.violet}
+content-background = ${colors.background}
+
+[module/arrow-date-end]
+type = custom/text
+content = ""
+content-font = 6
+content-foreground = ${colors.violet}
+content-background = ${colors.background}
+
 [module/date]
 type = internal/date
 date =   %%{F#fff}%H:%M %d %B, %Y - %A%%{F-}
+
+format = <label>
+format-background = ${colors.violet}
+format-foreground = ${colors.white}
+format-padding = 5
+
+[module/arrow-wireless]
+type = custom/text
+content = ""
+content-font = 6
+content-foreground = ${colors.blue}
+content-background = ${colors.green}
+
+[module/arrow-wireless-end]
+type = custom/text
+content = ""
+content-font = 6
+content-foreground = ${colors.blue}
+content-background = ${colors.green}
 
 [module/wireless-network]
 type = internal/network
@@ -85,86 +117,184 @@ interface = wlo1
 interval = 3.0
 ping-interval = 10
 
-format-connected = <ramp-signal> <label-connected>
+content-background = ${colors.blue}
+content-foreground = ${colors.white}
+
+format-connected =  <ramp-signal> <label-connected> 
+format-connected-background = ${colors.blue}
+format-connected-foreground = ${colors.white}
+format-connected-padding = 2
 label-connected = %essid%
-label-disconnected =    not connected
+label-disconnected =  not connected
 label-disconnected-foreground = #66
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+ramp-signal-0 = ""
+ramp-signal-1 = ""
+ramp-signal-2 = ""
+ramp-signal-3 = ""
+ramp-signal-4 = ""
 
-animation-packetloss-0 = 
-animation-packetloss-0-foreground = #ffa64c
-animation-packetloss-1 = 
-animation-packetloss-1-foreground = ${bar/top.foreground}
-animation-packetloss-framerate = 500
+[module/arrow-wired]
+type = custom/text
+content = ""
+content-font = 6
+content-foreground = ${colors.green}
+content-background = ${colors.background}
 
 [module/wired-network]
 type = internal/network
 interface = enp60s0
 interval = 3.0
 
-label-connected =    %local_ip%
-label-disconnected-foreground = #66
+format-connected =  <label-connected>
+label-connected = %local_ip%
+format-disconnected = " N/A "
+format-connected-padding = 2
+format-disconnected-padding = 2
+format-connected-foreground = ${colors.white}
+format-connected-background = ${colors.green}
+format-disconnected-foreground = ${colors.white}
+format-disconnected-background = ${colors.green}
+
+[module/arrow-volume-begin]
+type = custom/text
+content = ""
+content-font = 6
+content-foreground = ${colors.red}
+content-background = ${colors.grey}
 
 [module/volume]
 type = internal/pulseaudio
 use-ui-max = false
 
 format-volume = <ramp-volume> <label-volume>
+format-volume-padding = 2
+format-volume-background = ${colors.red}
+format-volume-foreground = ${colors.white}
 label-muted =   muted
-label-muted-foreground = #66
+label-muted-background = ${colors.red}
 
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-volume-3 = 
 
+[module/arrow-volume-end]
+type = custom/text
+content = " "
+content-font = 6
+content-foreground = ${colors.grey}
+content-background = ${colors.red}
+
 [bar/bottom]
-monitor = ${env:MONITOR:eDP-1}
-width = 100%
-height = 20 
+background = ${colors.background}
+foreground = ${colors.white}
+monitor = ${env:MONITOR:eDP1}
 
-background = #00000000
-foreground = #ccffffff
+padding = 0
+module-margin = 0
 
-line-color = ${bar/top.background}
-line-size = 16
-
-spacing = 2
-padding-right = 5
-module-margin = 4
-
-font-0 = NotoSans-Regular:size=10;-1
-font-1 = MaterialIcons:size=10;0
-font-2 = Wuncon Siji:size=10:antialias=false;-2
-font-3 = FontAwesome:size=10;
-font-4 = MaterialIcons:size=10;0
-font-5 = "DejaVu Sans":size=10;
-
+height = 24
 bottom = true
 
-modules-center = title
-modules-left = i3
+modules-left = i3 arrowi3
+modules-center = arrow-title title arrow-title-end
+modules-right = arrow-memory memory arrow-cpu cpu
+
+font-0 = Iosevka Nerd Font:size=10:antialias=true
+font-1 = MaterialIcons:size=10;0
+font-2 = Wuncon Siji:size=8:antialias=false;-2
+font-3 = FontAwesome:size=14;0
+font-4 = "DejaVu Sans Mono for Powerline":size=14
+font-5 = DejaVuSansMono Nerd Font:size=15;2
+
+[module/arrowi3]
+type = custom/text
+content = ""
+content-font = 6
+content-foreground = ${colors.green}
+content-background = ${colors.blue}
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = true
+strip-wsnumbers = true
+
+label-mode = %mode%
+label-mode-background = ${colors.light-blue}
+label-mode-padding = 2
+
+label-focused = %name%
+label-focused-padding = 2
+label-focused-background = ${colors.green}
+
+label-unfocused = %name%
+label-unfocused-padding = 2
+label-unfocused-background = ${colors.light-blue}
+
+label-visible = %name%
+label-visible-padding = 4
+label-visible-background =  ${colors.light-blue}
+
+label-urgent = %name%
+label-urgent-background = ${colors.red}
+label-urgent-padding = 4
+
+format = <label-state><label-mode>
+
+[module/arrow-cpu]
+type = custom/text
+content = ""
+content-font = 6
+content-foreground = ${colors.grey}
+content-background = ${colors.red}
+
+[module/cpu]
+type = internal/cpu
+
+interval = 3
+format = <label>
+label = "  %percentage% % "
+label-background = ${colors.grey}
+label-padding = 2
+
+[module/arrow-memory]
+type = custom/text
+content = ""
+content-font = 6
+content-foreground = ${colors.red}
+content-background = ${bar/bottom.background}
+
+[module/memory]
+type = internal/memory
+
+interval = 3
+format = <label>
+content-background = ${colors.red}
+label =  %percentage_used%% 
+label-background = ${colors.red}
+label-padding = 2
+
+[module/arrow-title]
+type = custom/text
+content = ""
+content-font = 6
+content-foreground = ${colors.violet}
+content-background = ${bar/bottom.background}
+
+[module/arrow-title-end]
+type = custom/text
+content = ""
+content-font = 6
+content-foreground = ${colors.violet}
+content-background = ${bar/bottom.background}
 
 [module/title]
 type = internal/xwindow
 
-format = %{T5}<label>%{T-}
-format-background = #00ffffff
+format = <label>
+format-background = ${colors.violet}
 format-padding = 4
-
 label = %title%
-label-maxlen = 50
 
-[module/i3]
-type = internal/i3
-pin-workspaces = true
-index-sort = true
-
-label-mode-padding = 3
-label-focused-padding = 3
-strip-wsnumbers = true

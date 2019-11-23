@@ -22,6 +22,10 @@ set number relativenumber
 nnoremap <SPACE> <NOP>
 let mapleader=" " 
 " Leader commands
+nnoremap <leader><leader> :Rg 
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>h :History:<CR>
+nnoremap <leader>l :Lines<CR>
 nnoremap <leader>s :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>o :setlocal spell! spelllang=en_us<CR>
@@ -34,10 +38,10 @@ inoremap jk <Esc>
 
 set tabstop=4
 set shiftwidth=4
-set lcs=eol:¬
+set lcs=eol:⏎,tab:\|\ 
 
 " Convert tabs to spaces
-set expandtab
+set noexpandtab
 
 " Show the normal commands like dt., 4cw, etc
 set showcmd
@@ -48,17 +52,22 @@ set list
 " Disable Powerline
 let g:powerline_loaded = 1
 
+" Enable line on where the cursor is; Helps a ton to locate the cursor
+set cursorline
+
+" Do not highlight search results
+set nohlsearch
+
+" Start searching as you type
+set incsearch
+
 " Disable training wheels
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-let g:tex_flavor='latex'
-" let g:Tex_FoldedSections     = ""
-" let g:Tex_FoldedEnvironments = ""
-" let g:Tex_FoldedMisc = ""
-let g:Imap_UsePlaceHolders = 0
+"let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_CompileRule_pdf = 'pdflatex --synctex=1 -interaction=nonstopmode $*'
 let theuniqueserv = expand("%:r")
@@ -100,9 +109,11 @@ let g:airline_symbols.linenr = ''
 
 call plug#begin()
 
+Plug 'junegunn/fzf', { 'dir': '~/dotfiles/nvim', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomlion/vim-solidity'
-Plug 'wincent/command-t'
 Plug 'tpope/vim-surround'
 Plug 'xuhdev/vim-latex-live-preview'
 Plug 'vim-latex/vim-latex'
@@ -114,7 +125,10 @@ Plug 'ncm2/ncm2-tmux'
 Plug 'ncm2/ncm2-path'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
-
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'kien/ctrlp.vim'
+Plug 'jremmen/vim-ripgrep'
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
@@ -146,8 +160,12 @@ autocmd VimLeave *.tex !rm *.aux, *.blg, *.bbl, *.log, *.out
 " Skeleton File Loading
 autocmd BufNewFile *.pmd 0r ~/.config/nvim/templates/pandoc-markdown.pmd
 autocmd BufNewFile *.tex 0r ~/.config/nvim/templates/latex.tex
-autocmd BufNewFile *.py 0r ~/.config/nvim/templates/python.py
-autocmd BufNewFile *.sh 0r ~/.config/nvim/templates/shell.sh
+autocmd BufNewFile *.py  0r ~/.config/nvim/templates/python.py
+autocmd BufNewFile *.sh  0r ~/.config/nvim/templates/shell.sh
 autocmd BufNewFile *.bmr 0r ~/.config/nvim/templates/pandoc-beamer.bmr
-autocmd BufNewFile *.c 0r ~/.config/nvim/templates/C-template.c
-autocmd BufNewFile *.h 0r ~/.config/nvim/templates/C-template.c
+autocmd BufNewFile *.c   0r ~/.config/nvim/templates/C-template.c
+autocmd BufNewFile *.cpp 0r ~/.config/nvim/templates/C-template.c
+autocmd BufNewFile *.h   0r ~/.config/nvim/templates/C-template.c
+autocmd BufNewFile *.hpp 0r ~/.config/nvim/templates/C-template.c
+autocmd BufNewFile *.sol 0r ~/.config/nvim/templates/solidity-template.sol
+

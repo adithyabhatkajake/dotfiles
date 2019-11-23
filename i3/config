@@ -16,7 +16,7 @@ set $mod2 Mod1
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 10
+font pango:Monaco 10
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -43,7 +43,9 @@ bindsym $mod+d exec --no-startup-id rofi -show combi
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # Open Calculator
-bindsym $mod+t exec --no-startup-id /home/haxolotl/bin/ddspawn /home/haxolotl/bin/dropdown-calc -f mono:pixelsize=24
+bindsym $mod+c exec --no-startup-id ~/bin/ddspawn dropdown-calc -f mono:pixelsize=24
+bindsym $mod+Shift+t exec --no-startup-id ~/bin/ddspawn dropdown-paper -f mono:pixelsize=24
+bindsym $mod+t exec --no-startup-id ~/bin/ddspawn dropdown-term -f mono:pixelsize=24
 
 # change focus
 bindsym $mod+h focus left
@@ -96,7 +98,7 @@ bindsym $mod+a focus parent
 # bindsym $mod+d focus child
 
 set $ws1 "1:"
-set $ws2 "2:"
+set $ws2 "2:"
 set $ws3 "3:"
 set $ws4 "4:"
 set $ws5 "5:"
@@ -191,10 +193,13 @@ mode $wssetup {
         # r will shift all the workspaces to the right
         # m will mirror with all the displays
         
-        bindsym m mode "default"; exec "~/.screenlayout/mirror.sh"
-        bindsym o mode "default"; exec "xrandr --output HDMI-0 --off --output eDP1 --off"
-        bindsym 1 move workspace to output eDP1
+        #bindsym m mode "default"; exec "~/.screenlayout/mirror.sh"
+        #bindsym o mode "default"; exec "xrandr --output HDMI-0 --off --output eDP1 --off"
+        bindsym 1 move workspace to output DP-1-1
         bindsym 2 move workspace to output HDMI-0
+        bindsym 3 move workspace to output eDP-1-1
+        bindsym 4 move workspace to output eDP1
+        bindsym 5 move workspace to output DP1
         bindsym s mode "default"; exec "~/dotfiles/scripts/workLayout.sh"; exec killall i3-nagbar
         bindsym t mode "default"; exec "~/dotfiles/scripts/termLayout.sh"; exec killall i3-nagbar
 
@@ -205,23 +210,6 @@ mode $wssetup {
 
 bindsym $mod+g mode $wssetup; exec "i3-nagbar -m '(s)tudy;(t)erm;move to (1);(2);(3)'"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-    i3bar_command i3bar -t
-    font pango:DejaVu Sans Mono, FontAwesome 10
-    position bottom
-    status_command /usr/bin/i3status-rs ~/.config/i3status-rust/example_config.toml 
-    colors {
-        background #22222230
-        statusline #dddddd
-        focused_workspace #0088CC #0088CC #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #333333 #333333 #888888
-        urgent_workspace #2f343a #900000 #ffffff
-    }
-    strip_workspace_numbers no
-}
 
 exec_always nitrogen --restore # Wallpapers are managed by nitrogen
 exec_always --no-startup-id compton --backend glx --config ~/.config/compton.conf
@@ -253,8 +241,8 @@ workspace_auto_back_and_forth yes # Enable moving between workspaces automatical
 # Move to the last workspace
 bindsym $mod+z workspace back_and_forth 
 
-gaps inner 15
-gaps outer 5
+gaps inner 5
+#gaps outer 0
 
 focus_follows_mouse yes
 
@@ -279,8 +267,11 @@ for_window [instance="dropdown*"] border pixel 3
 
 bindsym --release Print exec "scrot ~/Pictures/Screenshots/%b%d:%H%M%S.png"
 exec xset b off
+exec xset s off
+exec xset -dpms
 
 # Autostart Applications
-exec --no-startup-id udisksctl mount -b /dev/sda4 --no-user-interaction 
-exec --no-startup-id udisksctl mount -b /dev/sda3 --no-user-interaction 
+exec --no-startup-id udisksctl mount -b /dev/sda4 --no-user-interaction # Backup Partition
+exec --no-startup-id udisksctl mount -b /dev/sda5 --no-user-interaction # Media  Partition
 
+exec --no-startup-id libinput-gestures-setup start
