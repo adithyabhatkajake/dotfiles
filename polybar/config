@@ -25,12 +25,12 @@ spacing = 0
 # padding-right = 1
 # module-margin = 1
 
-font-0 = Iosevka Nerd Font:size=10:antialias=true
+font-0 = Iosevka Nerd Font:size=11:antialias=true
 font-1 = MaterialIcons:size=10;0
 font-2 = Wuncon Siji:size=8:antialias=false;-2
 font-3 = FontAwesome:size=14;0
 font-4 = "DejaVu Sans Mono for Powerline":size=14
-font-5 = DejaVuSansMono Nerd Font:size=15;2
+font-5 = DejaVuSansMono Nerd Font:size=16;3
 
 modules-left = i3 arrowi3 wireless-network arrow-wireless wired-network arrow-wired
 modules-center = arrow-date date arrow-date-end
@@ -76,21 +76,21 @@ animation-charging-framerate = 750
 
 [module/arrow-date]
 type = custom/text
-content = ""
+content = ""
 content-font = 6
 content-foreground = ${colors.violet}
 content-background = ${colors.background}
 
 [module/arrow-date-end]
 type = custom/text
-content = ""
+content = ""
 content-font = 6
 content-foreground = ${colors.violet}
 content-background = ${colors.background}
 
 [module/date]
 type = internal/date
-date =   %%{F#fff}%H:%M %d %B, %Y - %A%%{F-}
+date = "  %%{F#fff}%H:%M %d %B, %Y - %A%%{F-}"
 
 format = <label>
 format-background = ${colors.violet}
@@ -158,7 +158,7 @@ format-disconnected-background = ${colors.green}
 
 [module/arrow-volume-begin]
 type = custom/text
-content = ""
+content = ""
 content-font = 6
 content-foreground = ${colors.red}
 content-background = ${colors.grey}
@@ -181,7 +181,7 @@ ramp-volume-3 = 
 
 [module/arrow-volume-end]
 type = custom/text
-content = " "
+content = " "
 content-font = 6
 content-foreground = ${colors.grey}
 content-background = ${colors.red}
@@ -245,7 +245,7 @@ format = <label-state><label-mode>
 
 [module/arrow-cpu]
 type = custom/text
-content = ""
+content = " "
 content-font = 6
 content-foreground = ${colors.grey}
 content-background = ${colors.red}
@@ -261,7 +261,7 @@ label-padding = 2
 
 [module/arrow-memory]
 type = custom/text
-content = ""
+content = " "
 content-font = 6
 content-foreground = ${colors.red}
 content-background = ${bar/bottom.background}
