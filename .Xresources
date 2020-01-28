@@ -4,7 +4,7 @@ Xft.hintstyle: hintslight
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
-URxvt*font: xft:Inconsolata Nerd Font :size=12,xft:DejaVu Sans Mono for Powerline:size=12,xft:MaterialIcons:size=8,xft:Wuncon Siji:size=8
+URxvt*font: xft:FuraCode Nerd Font:Regular:size=13,xft:DejaVu Sans Mono for Powerline:size=12,xft:MaterialIcons:size=8,xft:Wuncon Siji:size=8
 URxvt.scrollBar: false
 URxvt*letterSpace: 0
 URxvt*depth: 32

@@ -11,9 +11,4 @@ alias sshescher="ssh bhat24@escher13.cs.purdue.edu"
 alias sshtundra="ssh hermitsage@tundra.cs.purdue.edu"
 
 # SSH Variables
-export C5NLARGE="ec2-18-219-127-15.us-east-2.compute.amazonaws.com"
-export M5ADLARGE="ec2-3-135-216-75.us-east-2.compute.amazonaws.com"
-export R5ADLARGE="ec2-13-59-244-13.us-east-2.compute.amazonaws.com"
-export T2XLARGE="ec2-18-221-209-36.us-east-2.compute.amazonaws.com"
-export T3ALARGE="ec2-18-224-202-60.us-east-2.compute.amazonaws.com"
-export D2XLARGE="ec2-3-133-143-161.us-east-2.compute.amazonaws.com"
+export T3ALARGE="ec2-3-133-105-99.us-east-2.compute.amazonaws.com"

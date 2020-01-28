@@ -36,6 +36,22 @@ nnoremap <leader>n :r !echo ""<CR>k
 tnoremap jk <C-\><C-n>
 inoremap jk <Esc>
 
+" Easy Splits and Tabs
+nnoremap ;- :sp<CR>
+nnoremap ;\| :vsp<CR>
+nnoremap ;1 1gt
+nnoremap ;2 2gt
+nnoremap ;3 3gt
+nnoremap ;4 4gt
+nnoremap ;5 5gt
+nnoremap ;6 6gt
+nnoremap ;7 7gt
+nnoremap ;8 8gt
+nnoremap ;9 9gt
+nnoremap ;0 10gt
+nnoremap ;z :tabprev<CR>
+nnoremap ;n :tabnew<CR>
+
 set tabstop=4
 set shiftwidth=4
 set lcs=eol:⏎,tab:\|\ 
