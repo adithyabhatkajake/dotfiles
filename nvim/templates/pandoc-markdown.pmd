@@ -3,6 +3,7 @@ title: <++>
 author: Adithya Bhat
 date: \today
 institute: Purdue University
+geometry:"top=2cm, bottom=1.5cm, left=1cm, right=1cm"
 
 ---
 
