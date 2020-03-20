@@ -8,7 +8,7 @@ alias vimconfig="$EDITOR ~/dotfiles/nvimrc"
 alias sshcs="ssh bhat24@data.cs.purdue.edu"
 alias sshpod="ssh bhat24@pod3-4.cs.purdue.edu"
 alias sshescher="ssh bhat24@escher13.cs.purdue.edu"
-alias sshtundra="ssh hermitsage@tundra.cs.purdue.edu"
+alias sshtundra="ssh haxolotl@tundra.cs.purdue.edu"
 
 # SSH Variables
 export T3ALARGE="ec2-3-133-105-99.us-east-2.compute.amazonaws.com"

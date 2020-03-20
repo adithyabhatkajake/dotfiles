@@ -125,7 +125,7 @@ let g:airline_symbols.linenr = ''
 
 call plug#begin()
 
-Plug 'junegunn/fzf', { 'dir': '~/dotfiles/nvim', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'terryma/vim-multiple-cursors'
@@ -145,6 +145,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'kien/ctrlp.vim'
 Plug 'jremmen/vim-ripgrep'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
