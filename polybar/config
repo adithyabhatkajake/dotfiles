@@ -1,5 +1,11 @@
 [colors]
-background = #00000000
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
+
 white = #fff
 red = #ff0000
 black = #000000
@@ -16,7 +22,7 @@ height = 24
 bottom = true
 
 background = ${colors.background}
-foreground = #ffffff
+foreground = ${colors.foreground}
 
 # line-color = ${bar/top.background}
 # line-size = 16
@@ -25,16 +31,16 @@ spacing = 0
 # padding-right = 1
 # module-margin = 1
 
-font-0 = Iosevka Nerd Font:size=11:antialias=true
-font-1 = MaterialIcons:size=10;0
-font-2 = Wuncon Siji:size=8:antialias=false;-2
-font-3 = FontAwesome:size=14;0
-font-4 = "DejaVu Sans Mono for Powerline":size=14
-font-5 = DejaVuSansMono Nerd Font:size=16;3
+font-0 = Iosevka:style=Regular:size=11:antialias=true;0
+font-1 = Material Icons:style=Regular:size=11;0
+font-2 = Siji:style=Regular:size=11:antialias=false;0
+font-3 = FontAwesome:size=11;0
+font-4 = "DejaVu Sans Mono for Powerline":size=11
+font-5 = DejaVuSansMono Nerd Font:size=11;0
+font-6 = Iosevka:style=Regular:size=18:antialias=true;0
 
-modules-left = i3 arrowi3 wireless-network arrow-wireless wired-network arrow-wired
-modules-center = arrow-date date arrow-date-end
-modules-right = arrow-memory memory arrow-cpu cpu arrow-volume-begin volume arrow-volume-end battery
+modules-left = i3 
+modules-right = arrow-black-flat wired-network arrow-grey-red wireless-network arrow-red-grey date arrow-grey-red memory arrow-red-grey cpu arrow-grey-red volume arrow-red-grey battery
 
 [module/battery]
 type = internal/battery
@@ -74,42 +80,14 @@ animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-framerate = 750
 
-[module/arrow-date]
-type = custom/text
-content = ""
-content-font = 6
-content-foreground = ${colors.violet}
-content-background = ${colors.background}
-
-[module/arrow-date-end]
-type = custom/text
-content = ""
-content-font = 6
-content-foreground = ${colors.violet}
-content-background = ${colors.background}
-
 [module/date]
 type = internal/date
 date = "  %%{F#fff}%H:%M %d %B, %Y - %A%%{F-}"
 
 format = <label>
-format-background = ${colors.violet}
-format-foreground = ${colors.white}
-format-padding = 5
-
-[module/arrow-wireless]
-type = custom/text
-content = ""
-content-font = 6
-content-foreground = ${colors.blue}
-content-background = ${colors.green}
-
-[module/arrow-wireless-end]
-type = custom/text
-content = ""
-content-font = 6
-content-foreground = ${colors.blue}
-content-background = ${colors.green}
+format-background = ${colors.grey}
+# format-foreground = ${colors.white}
+format-padding = 3
 
 [module/wireless-network]
 type = internal/network
@@ -117,11 +95,11 @@ interface = wlo1
 interval = 3.0
 ping-interval = 10
 
-content-background = ${colors.blue}
+content-background = ${colors.red}
 content-foreground = ${colors.white}
 
 format-connected =  <ramp-signal> <label-connected> 
-format-connected-background = ${colors.blue}
+format-connected-background = ${colors.red}
 format-connected-foreground = ${colors.white}
 format-connected-padding = 2
 label-connected = %essid%
@@ -134,13 +112,6 @@ ramp-signal-2 = ""
 ramp-signal-3 = ""
 ramp-signal-4 = ""
 
-[module/arrow-wired]
-type = custom/text
-content = ""
-content-font = 6
-content-foreground = ${colors.green}
-content-background = ${colors.background}
-
 [module/wired-network]
 type = internal/network
 interface = enp60s0
@@ -152,16 +123,37 @@ format-disconnected = " N/A "
 format-connected-padding = 2
 format-disconnected-padding = 2
 format-connected-foreground = ${colors.white}
-format-connected-background = ${colors.green}
+format-connected-background = ${colors.grey}
 format-disconnected-foreground = ${colors.white}
-format-disconnected-background = ${colors.green}
+format-disconnected-background = ${colors.grey}
 
-[module/arrow-volume-begin]
+[module/arrow-red-grey]
 type = custom/text
 content = ""
-content-font = 6
+content-font = 7
+content-foreground = ${colors.grey}
+content-background = ${colors.red}
+
+[module/arrow-grey-red]
+type = custom/text
+content = ""
+content-font = 7
 content-foreground = ${colors.red}
 content-background = ${colors.grey}
+
+[module/arrow-red-flat]
+type = custom/text
+content = ""
+content-font = 1
+content-foreground = ${colors.red}
+content-background = ${colors.background}
+
+[module/arrow-black-flat]
+type = custom/text
+content = ""
+content-font = 1
+content-foreground = ${colors.grey}
+content-background = ${colors.background}
 
 [module/volume]
 type = internal/pulseaudio
@@ -179,35 +171,6 @@ ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-volume-3 = 
 
-[module/arrow-volume-end]
-type = custom/text
-content = " "
-content-font = 6
-content-foreground = ${colors.grey}
-content-background = ${colors.red}
-
-[bar/bottom]
-background = ${colors.background}
-foreground = ${colors.white}
-monitor = ${env:MONITOR:eDP1}
-
-padding = 0
-module-margin = 0
-
-height = 24
-bottom = true
-
-modules-left = i3 arrowi3
-modules-center = arrow-title title arrow-title-end
-modules-right = arrow-memory memory arrow-cpu cpu
-
-font-0 = Iosevka Nerd Font:size=10:antialias=true
-font-1 = MaterialIcons:size=10;0
-font-2 = Wuncon Siji:size=8:antialias=false;-2
-font-3 = FontAwesome:size=14;0
-font-4 = "DejaVu Sans Mono for Powerline":size=14
-font-5 = DejaVuSansMono Nerd Font:size=15;2
-
 [module/arrowi3]
 type = custom/text
 content = ""
@@ -222,16 +185,16 @@ pin-workspaces = true
 strip-wsnumbers = true
 
 label-mode = %mode%
-label-mode-background = ${colors.light-blue}
+label-mode-background = ${colors.black}
 label-mode-padding = 2
 
 label-focused = %name%
 label-focused-padding = 2
-label-focused-background = ${colors.green}
+label-focused-background = ${colors.light-blue}
 
 label-unfocused = %name%
 label-unfocused-padding = 2
-label-unfocused-background = ${colors.light-blue}
+label-unfocused-background = ${colors.black}
 
 label-visible = %name%
 label-visible-padding = 2
@@ -245,7 +208,6 @@ label-seperator = "-"
 
 format = <label-state> <label-mode>
 
-
 [module/arrow-cpu]
 type = custom/text
 content = " "
@@ -258,7 +220,8 @@ type = internal/cpu
 
 interval = 3
 format = <label>
-label = "  %percentage% % "
+label = " %percentage% % "
+label-font = 1
 label-background = ${colors.grey}
 label-padding = 2
 
@@ -275,7 +238,8 @@ type = internal/memory
 interval = 3
 format = <label>
 content-background = ${colors.red}
-label =  %percentage_used%% 
+label = " %percentage_used% %"
+label-font = 4
 label-background = ${colors.red}
 label-padding = 2
 
@@ -292,12 +256,3 @@ content = ""
 content-font = 6
 content-foreground = ${colors.violet}
 content-background = ${bar/bottom.background}
-
-[module/title]
-type = internal/xwindow
-
-format = <label>
-format-background = ${colors.violet}
-format-padding = 4
-label = %title%
-

@@ -1,12 +1,20 @@
 # Aliases to be used
+alias please="sudo"
 
 # Config Alias
-alias zshconfig="$EDITOR ~/dotfiles/zshrc"
-alias vimconfig="$EDITOR ~/dotfiles/nvimrc"
+alias zshrc="$EDITOR ~/dotfiles/zshrc"
+alias vimrc="$EDITOR ~/dotfiles/nvimrc"
+alias aliasrc="$EDITOR ~/dotfiles/aliasrc"
 
 # SSH aliases
 alias sshcs="ssh bhat24@data.cs.purdue.edu"
 alias sshpod="ssh bhat24@pod3-4.cs.purdue.edu"
 alias sshescher="ssh bhat24@escher13.cs.purdue.edu"
 alias sshtundra="ssh hermitsage@tundra.cs.purdue.edu"
+
+# Session Aliases
+alias lhtlp='WORK_DIR=/run/media/haxolotl/Backup/GitRoot/LHTLP SESSION_NAME="LHTLP" tmux-session.sh'
+alias cs514='WORK_DIR="/run/media/haxolotl/Backup/Purdue Course Materials/Spring 2020/CS514-NM/" SESSION_NAME="CS514-NM" tmux-session.sh'
+alias e2cfull='WORK_DIR="/run/media/haxolotl/Backup/GitRoot/BlockStore/E2C-FullVersion" SESSION_NAME="E2C-Full" EXTRA_CONFIG="/run/media/haxolotl/Backup/GitRoot/BlockStore/E2C-FullVersion/e2c-full-tmux.sh" tmux-session.sh'
+alias ns3='WORK_DIR="/run/media/haxolotl/Backup/GitRoot/BlockStore/NS3/ns3-sim" SESSION_NAME="NS3-Work" EXTRA_CONFIG="/run/media/haxolotl/Backup/GitRoot/BlockStore/NS3/ns3-sim/ns3-config.sh" tmux-session.sh'
 

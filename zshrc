@@ -55,7 +55,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(history history-substring-search rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #
-plugins=(gitfast git-extras python sudo common-aliases history-substring-search)
+plugins=(git gitfast git-extras python sudo common-aliases history-substring-search)
 
 POWERLINE_PATH="dir"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -94,6 +94,8 @@ export LANG=en_US.UTF-8
 export PATH=$PATH:$HOME/bin
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 # export GOPATH=/home/adithya/go
+export PATH=$PATH:$HOME/.gem/ruby/2.7.0/bin
+export PATH=$PATH:$HOME/go/bin
 
 # vim is always nvim
 alias vim="stty stop '' -ixoff ; nvim"
@@ -108,7 +110,8 @@ export VISUAL=nvim
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 # Enable VIM mode for the terminal
-bindkey -v
+# bindkey -v
+# DISABLED SINCE IT IS MORE ANNOYING THAN USEFUL
 
 # Example aliases
 source ~/dotfiles/aliasrc

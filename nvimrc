@@ -1,3 +1,5 @@
+set rtp+=runtimepath=~/.config/nvim,~/dotfiles/nvim/,~/.config/nvim/plugged/fzf.vim/,~/.config/nvim/plugged/vim-tmux-navigator/,~/.config/nvim/plugged/vim-multiple-cursors/,~/.config/nvim/plugged/vim-solidity/,~/.config/nvim/plugged/vim-surround/,~/.config/nvim/plugged/vim-latex-live-preview/,~/.config/nvim/plugged/vim-latex/,~/.config/nvim/plugged/supertab/,~/.config/nvim/plugged/ncm2/,~/.config/nvim/plugged/nvim-yarp/,~/.config/nvim/plugged/ncm2-bufword/,~/.config/nvim/plugged/ncm2-tmux/,~/.config/nvim/plugged/ncm2-path/,~/.config/nvim/plugged/auto-pairs/,~/.config/nvim/plugged/nerdcommenter/,~/.config/nvim/plugged/vim-go/,~/.config/nvim/plugged/coc.nvim/,~/.config/nvim/plugged/vim-ripgrep/,/etc/xdg/nvim,~/.local/share/nvim/site,/usr/local/share/nvim/site,/usr/share/nvim/site,/usr/share/nvim/runtime,/usr/share/nvim/runtime/pack/dist/opt/matchit,/usr/share/nvim/site/after,/usr/local/share/nvim/site/after,~/.local/share/nvim/site/after,/etc/xdg/nvim/after,~/.config/nvim/after,/usr/share/vim/vimfiles
+
 set nocompatible
 
 "Enable Mouse Usage in all modes
