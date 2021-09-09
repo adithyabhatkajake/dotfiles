@@ -10,7 +10,7 @@ alias aliasrc="$EDITOR ~/dotfiles/aliasrc"
 alias sshcs="ssh bhat24@data.cs.purdue.edu"
 alias sshpod="ssh bhat24@pod3-4.cs.purdue.edu"
 alias sshescher="ssh bhat24@escher13.cs.purdue.edu"
-alias sshtundra="ssh hermitsage@tundra.cs.purdue.edu"
+alias sshtundra="ssh haxolotl@tundra.cs.purdue.edu"
 
 # Session Aliases
 alias lhtlp='WORK_DIR=/run/media/haxolotl/Backup/GitRoot/LHTLP SESSION_NAME="LHTLP" tmux-session.sh'

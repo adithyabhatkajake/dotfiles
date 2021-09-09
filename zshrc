@@ -2,15 +2,18 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/usr/share/oh-my-zsh
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	export ZSH=~/.oh-my-zsh
+	PATH=$PATH:$HOME/Library/Python/3.7/bin/
+fi
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerline"
+ZSH_THEME="agnoster"
 
-# powerline-daemon -q
-# . /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+powerline-daemon -q
+#. /usr/local/lib/python3.7/site-packages/
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -107,7 +110,13 @@ export SUDO_EDITOR=nvim
 export VISUAL=nvim
 
 # Enable Z cd-ing
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	[[ -r /usr/local/etc/profile.d/z.sh ]] && \
+		source /usr/local/etc/profile.d/z.sh
+else
+	[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+fi
 
 # Enable VIM mode for the terminal
 # bindkey -v
